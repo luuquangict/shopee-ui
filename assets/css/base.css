@@ -1,0 +1,275 @@
+:root {
+  --primary-r: 14;
+  --primary-g: 174;
+  --primary-b: 87;
+  --primary-a: 255;
+  --secondary-r: 12;
+  --secondary-g: 116;
+  --secondary-b: 117;
+  --secondary-a: 255;
+
+  --primary-color: rgba(var(--primary-r), var(--primary-g), var(--primary-b), var(--primary-a));
+  --secondary-color: rgba(var(--secondary-r), var(--secondary-g), var(--secondary-b), var(--secondary-a));
+
+  --white-color: #fff;
+  --black-color: #000;
+  --text-color: #333;
+  --background-color: #ebebeb;
+  --border-color: #dbdbdb;
+}
+
+* {
+  /*
+    Giải thích: Nâng cao
+  */
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+.grid {
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  /* 
+    Giải thích: 
+    Với những màn hình lớn 1200px thì grid sẽ có chiều dài là 1200px
+    Nhưng với màn hình nhỏ hơn 1200px, thì grid sẽ có độ dài = với độ dài của màn hình.
+  */
+}
+
+.grid__full-width {
+  width: 100%;
+}
+
+.grid__row {
+  /*
+    Giải thích: Giúp cho những thằng nằm trong class này sẽ trải dài hàng ngang
+    và nếu độ dài vượt quá thì nó tự xuống dòng
+  */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.shown {
+  display: block;
+}
+
+/* ========================================= */
+/* ANIMATIONS */
+/* ========================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes flyInX {
+  from {
+    transform: translateX(var(--fly-from));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes flyInY {
+  from {
+    transform: translateY(var(--fly-from));
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes growth {
+  from {
+    transform: scale(var(--growth-from));
+  }
+  to {
+    transform: scale(var(--growth-to));
+  }
+}
+
+/* ========================================= */
+/* MODAL */
+/* ========================================= */
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  animation: fadeIn linear 0.3s;
+}
+
+.modal__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__container {
+  position: relative;
+  margin: auto;
+  z-index: 1;
+}
+
+.modal--fly-left {
+  --fly-from: -200px;
+  animation: flyInX linear 0.15s;
+}
+
+.modal--fly-right {
+  --fly-from: 200px;
+  animation: flyInX linear 0.15s;
+}
+
+.modal--fly-up {
+  --fly-from: 200px;
+  animation: flyInY linear 0.15s;
+}
+
+.modal--fly-down {
+  --fly-from: -200px;
+  animation: flyInY linear 0.15s;
+}
+
+.modal--growth {
+  --growth-from: 0.7;
+  --growth-to: 1;
+  animation: growth linear 0.15s;
+}
+
+/* ========================================= */
+/* BUTTON */
+/* ========================================= */
+
+.btn {
+  min-width: 140px;
+  height: 34px;
+  line-height: 1.3rem;
+  padding: 0 12px;
+  margin: 0;
+  font-size: 1.4rem;
+
+  font-weight: 300;
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
+  color: var(--text-color);
+  background-color: transparent;
+
+  outline: none;
+  border: none;
+  border-radius: 4px;
+
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.btn.btn--small {
+  min-width: 80px;
+  height: 28px;
+  padding: 0 8px;
+  font-size: 1.2rem;
+}
+
+.btn.btn--large {
+  min-width: 160px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 1.6rem;
+}
+
+.btn.btn--icon {
+  position: relative;
+  padding-left: 34px;
+}
+
+.btn.btn--icon i {
+  position: absolute;
+  top: calc(50% - 0.9rem);
+  font-size: 1.8rem;
+  left: 12px;
+}
+
+.btn.btn--small.btn--icon {
+  padding-left: 28px;
+}
+
+.btn.btn--small.btn--icon i {
+  font-size: 1.6rem;
+  top: calc(50% - 0.8rem);
+  left: 8px;
+}
+
+.btn.btn--large.btn--icon {
+  padding-left: 40px;
+}
+
+.btn.btn--large.btn--icon i {
+  font-size: 2rem;
+  top: calc(50% - 1rem);
+  left: 16px;
+}
+
+.btn:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  background-color: #ebebeb;
+}
+
+.btn.btn--primary {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+
+.btn.btn--disabled {
+  color: #eee;
+  background-color: #adadad;
+}
+
+.btn.btn--disabled:hover {
+  cursor: default;
+  opacity: 1;
+}
+
+/* ========================================= */
+/* ========================================= */
+/* ========================================= */
+/* ========================================= */
