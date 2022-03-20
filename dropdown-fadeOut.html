@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .menu-item {
+        cursor: pointer;
+        height: 100px;
+        width: 100px;
+        background-color: brown;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .menu-item span {
+        height: 100%;
+        width: 100%;
+        line-height: 100px;
+        color: white;
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: blueviolet;
+        width: 200px;
+        height: 300px;
+        /* animation: fadeIn linear 0.5s; */
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-item">
+      <span>Hover me</span>
+      <div class="dropdown"></div>
+    </div>
+  </body>
+
+  <script>
+    document.querySelector(".menu-item").addEventListener("mouseover", hoverIn);
+    document.querySelector(".menu-item").addEventListener("mouseout", hoverOut);
+    const dropdown = document.querySelector(".dropdown");
+    hide(dropdown);
+
+    let isRunning = false;
+    const timeRun = 0.2;
+    let timeoutIn = null;
+    let timeoutOut = null;
+
+    function hoverIn() {
+      if (isRunning && timeoutOut) {
+        clearInterval(timeoutOut);
+      }
+
+      isRunning = true;
+      setText("Hover in...");
+      show(dropdown);
+      addAnimation(dropdown, "fadeIn", timeRun);
+
+      timeoutIn = setTimeout(() => {
+        setText("Hovered");
+        isRunning = false;
+      }, timeRun * 1000);
+    }
+
+    function hoverOut(e) {
+      const x = e.relatedTarget.closest(".menu-item");
+      if (x) {
+        console.log("Exist so return");
+        return;
+      }
+
+      if (isRunning && timeoutIn) {
+        clearInterval(timeoutIn);
+      }
+
+      setText("hover outing...");
+      addAnimation(dropdown, "fadeOut", timeRun);
+
+      timeoutOut = setTimeout(() => {
+        hide(dropdown);
+        removeAnimation(dropdown);
+        setText("Hover outed");
+      }, timeRun * 1000);
+    }
+
+    function setText(msg) {
+      document.querySelector("span").innerText = msg;
+    }
+
+    function addAnimation(element, name, time) {
+      if (element?.style) {
+        element.style.animation = `${name} linear ${time}s`;
+        element.style.animationFillMode = "forwards";
+      }
+    }
+
+    function removeAnimation(element) {
+      if (element?.style) {
+        element.style.animationFillMode = "";
+        element.style.animation = "";
+      }
+    }
+
+    function show(element) {
+      if (element?.style) {
+        element.style.display = "flex";
+      }
+    }
+
+    function hide(element) {
+      if (element?.style) {
+        element.style.display = "none";
+      }
+    }
+  </script>
+</html>

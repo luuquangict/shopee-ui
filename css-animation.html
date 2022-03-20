@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>animation</title>
+    <style>
+      body {
+        position: relative;
+      }
+
+      .modal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+
+        opacity: 0;
+        display: none;
+      }
+
+      .modal-content {
+        background-color: blueviolet;
+        width: 300px;
+        height: 200px;
+      }
+
+      /*=============================================*/
+      /*=============================================*/
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes flyIn {
+        from {
+          transform: translateX(200px);
+        }
+
+        to {
+          transform: translateX(0px);
+        }
+      }
+
+      @keyframes flyOut {
+        from {
+          transform: translateX(0px);
+        }
+
+        to {
+          transform: translateX(200px);
+        }
+      }
+
+      @keyframes growthIn {
+        from {
+          transform: scale(0.7);
+        }
+
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes growthOut {
+        from {
+          transform: scale(1);
+        }
+
+        to {
+          transform: scale(0.7);
+        }
+      }
+
+      @keyframes rotateIn {
+        from {
+          transform: rotate(0);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes rotateOut {
+        from {
+          transform: rotate(360deg);
+        }
+
+        to {
+          transform: rotate(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <label>Bay vào</label>
+    <select class="select-in">
+      <option value="growthIn">growthIn</option>
+      <option value="fadeIn">fadeIn</option>
+      <option value="flyIn">flyIn</option>
+      <option value="rotateIn">rotateIn</option>
+    </select>
+    <br />
+    <br />
+    <label>Bay ra</label>
+    <select class="select-out">
+      <option value="growthOut">growthOut</option>
+      <option value="fadeOut">fadeOut</option>
+      <option value="flyOut">flyOut</option>
+      <option value="rotateOut">rotateOut</option>
+    </select>
+
+    <h3>Click vào giữa màn hình để close modal</h3>
+    <button class="btn-click-me">Open modal</button>
+
+    <div class="modal-container hidden">
+      <div class="modal-content"></div>
+    </div>
+
+    <script>
+      const btnClickMe = document.querySelector(".btn-click-me");
+      const container = document.querySelector(".modal-container");
+      const modalContent = document.querySelector(".modal-content");
+
+      btnClickMe.addEventListener("click", clickMe);
+
+      const timeOpen = 0.3;
+      const timeClose = 0.3;
+
+      function clickMe() {
+        console.log("opening...");
+
+        const animationNameIn = document.querySelector(".select-in").value;
+
+        show(container);
+        addAnimation(container, "fadeIn", timeOpen);
+        addAnimation(modalContent, animationNameIn, timeOpen);
+
+        setTimeout(() => {
+          // Sau khi open xong thì mới add sự kiện click vào overlay
+          // Tránh tính trạng click trong khi animation đang chạy
+          container.addEventListener("click", overlayClicked);
+          console.log("Opened");
+        }, timeOpen * 1000);
+      }
+
+      function overlayClicked() {
+        console.log("Closing...");
+        const animationNameOut = document.querySelector(".select-out").value;
+        // Click vào overlay rồi thì xóa luôn sự kiện click vào overlay
+        // Tránh tình trạng click lại lần nữa
+        container.removeEventListener("click", overlayClicked);
+
+        // Thêm animation out
+        addAnimation(container, "fadeOut", timeClose);
+        addAnimation(modalContent, animationNameOut, timeClose);
+
+        setTimeout(() => {
+          // Chạy xong animation out
+
+          // Giấu cửa sổ container đi
+          hide(container);
+          // Sau khi chạy xong animation thì xóa animation style đi
+          removeAnimation(container);
+          removeAnimation(modalContent);
+
+          console.log("Closed");
+        }, timeClose * 1000);
+      }
+
+      function addAnimation(element, name, time) {
+        if (element?.style) {
+          element.style.animation = `${name} ease ${time}s`;
+          element.style.animationFillMode = "forwards";
+        }
+      }
+
+      function removeAnimation(element) {
+        if (element?.style) {
+          element.style.animationFillMode = "";
+          element.style.animation = "";
+        }
+      }
+
+      function show(element) {
+        if (element?.style) {
+          element.style.display = "flex";
+        }
+      }
+
+      function hide(element) {
+        if (element?.style) {
+          element.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
