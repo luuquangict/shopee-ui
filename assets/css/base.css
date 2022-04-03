@@ -26,6 +26,7 @@
 
   --header-container-height: 120px;
   --navbar-height: 40px;
+  --header-sort-bar-height: 46px;
   --header-height: calc(var(--header-container-height) - var(--navbar-height));
   --dropdown-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
   --border-radius-size: 3px;
@@ -54,23 +55,6 @@ html {
   line-height: 1.6rem;
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
-}
-
-/* Reponsive */
-
-.grid {
-  width: 1200px;
-  max-width: 100%;
-  margin: 0 auto;
-  /* 
-    Giải thích: 
-    Với những màn hình lớn 1200px thì grid sẽ có chiều dài là 1200px
-    Nhưng với màn hình nhỏ hơn 1200px, thì grid sẽ có độ dài = với độ dài của màn hình.
-  */
-}
-
-.grid__full-width {
-  width: 100%;
 }
 
 .grid__row {

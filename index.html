@@ -7,7 +7,9 @@
     <title>Shoppe Home | EFRISE.COM</title>
     <link rel="stylesheet" href="./assets/css/normalize.min.css" />
     <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/grid.css" />
     <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/responsive.css" />
     <link rel="stylesheet" href="./assets/fonts/fontawesome-5.15.4/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -16,8 +18,8 @@
     <div class="app">
       <!-- Header -->
       <header class="header__container">
-        <div class="grid">
-          <nav class="navbar">
+        <div class="grid wide">
+          <nav class="navbar hide-on-mobile-tablet">
             <!-- Left navbar -->
             <ul class="navbar__list">
               <li class="navbar__item navbar__link">
@@ -145,7 +147,7 @@
             <!-- End Right navbar -->
           </nav>
           <div class="header">
-            <div class="header__logo">
+            <div class="header__logo hide-on-tablet">
               <div class="header__logo-img">
                 <svg viewBox="0 0 192 65" class="shopee-svg-icon header-with-search__shopee-logo icon-shopee-logo">
                   <g fill-rule="evenodd">
@@ -278,11 +280,29 @@
             </div>
           </div>
         </div>
+        <div class="header__sort-bar-container">
+          <div class="grid wide">
+            <ul class="header__sort-bar-list">
+              <li class="header__sort-item">
+                <a class="header__sort-link" href="#">Liên quan</a>
+              </li>
+              <li class="header__sort-item header__sort-item--active">
+                <a class="header__sort-link" href="#">Mới nhất</a>
+              </li>
+              <li class="header__sort-item">
+                <a class="header__sort-link" href="#">Bán chạy</a>
+              </li>
+              <li class="header__sort-item">
+                <a class="header__sort-link" href="#">Giá</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </header>
 
       <!-- Container -->
       <div class="app__container">
-        <div class="grid">
+        <div class="grid wide">
           <div class="grid__row">
             <div class="grid__col-2">
               <nav class="category">
@@ -304,7 +324,7 @@
               </nav>
             </div>
             <div class="grid__col-10">
-              <div class="home-criteria__wrapper">
+              <div class="home-criteria__wrapper hide-on-mobile-tablet">
                 <div class="home-criteria">
                   <span class="home-criteria__label">Sắp xếp theo</span>
                   <button class="btn btn--small btn--light home-criteria__button">Phổ biến</button>
@@ -386,7 +406,7 @@
         </div>
       </div>
       <footer id="footer" class="footer">
-        <div class="grid">
+        <div class="grid wide">
           <div class="grid__row">
             <div class="grid__col-2-4">
               <h3 class="footer__heading">Chăm sóc khách hàng</h3>
@@ -458,7 +478,7 @@
           </div>
         </div>
         <div class="footer__bottom">
-          <div class="grid">
+          <div class="grid wide">
             <div class="grid__row">
               <p class="footer__text">© 2021 - Bản quyền thuộc về Công ty TNHH Shopee</p>
             </div>
