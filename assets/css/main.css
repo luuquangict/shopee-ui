@@ -7,7 +7,6 @@ body {
 
 .header__container {
   height: var(--header-container-height);
-  background-image: linear-gradient(0, var(--secondary-color), var(--primary-color));
 }
 
 /* ==================================================== */
@@ -266,6 +265,10 @@ body {
   height: var(--header-height);
   display: flex;
   align-items: center;
+}
+
+.header__bar {
+  background-image: linear-gradient(0, var(--secondary-color), var(--primary-color));
 }
 
 /* Logo */
@@ -730,6 +733,58 @@ body {
   border-bottom-left-radius: var(--border-radius-size);
   border-bottom-right-radius: var(--border-radius-size);
 }
+
+/* ==================================================== */
+/* Mobile search */
+/* ==================================================== */
+
+.header__search-mobile-button {
+  padding: 15px;
+  display: none;
+}
+
+.header__search-mobile-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.header__search-mobile-button i {
+  font-size: 2.2rem;
+  color: var(--white-color);
+}
+
+.header__search-mobile-checkbox:checked ~ .header__search-mobile {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__search-mobile {
+  position: fixed;
+  z-index: 9;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  height: 46px;
+  padding: 6px 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s;
+}
+
+.header__search-mobile .header__search-history {
+  position: fixed;
+  top: 47px;
+  width: 100%;
+  left: 0;
+}
+
+/* .header__search-mobile .header__search-input {
+  padding-left: 0;
+} */
 
 /* ==================================================== */
 /* AUTHEN MODAL */
