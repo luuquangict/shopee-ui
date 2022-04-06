@@ -57,6 +57,11 @@
     display: none;
   }
 
+  .app__container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   .header__bar {
     position: relative;
     z-index: 9999;

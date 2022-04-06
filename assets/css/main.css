@@ -1,6 +1,7 @@
 body {
   /* background: url(../img/bg.png) repeat-y top center #e3a22c; */
   /* background: url(../img/bg.png) no-repeat top center #e3a22c; */
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -936,7 +937,7 @@ body {
 .app__container {
   background-color: var(--background-color);
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 12px;  
 }
 
 .category {

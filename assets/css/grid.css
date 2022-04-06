@@ -16,9 +16,14 @@
   margin-right: -4px;
 }
 
-.row.no-gutters {
+.row.no-gutter {
   margin-left: 0;
   margin-right: 0;
+}
+
+.row.sm-gutter {
+  margin-left: -5px;
+  margin-right: -5px;
 }
 
 .col {
@@ -26,7 +31,12 @@
   padding-right: 4px;
 }
 
-.row.no-gutters .col {
+.row.sm-gutter .col {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.row.no-gutter .col {
   padding-left: 0;
   padding-right: 0;
 }
@@ -450,6 +460,11 @@
     margin-right: -5px;
   }
 
+  .wide .row.no-gutter {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   .wide .col {
     padding-left: 12px;
     padding-right: 12px;
@@ -458,6 +473,11 @@
   .wide .row.sm-gutter .col {
     padding-left: 5px;
     padding-right: 5px;
+  }
+
+  .wide .row.no-gutter .col {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .wide .l-0 {
