@@ -1036,6 +1036,7 @@ body {
   max-width: 100%;
   overflow-x: auto;
   margin: 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-category__list::-webkit-scrollbar {
