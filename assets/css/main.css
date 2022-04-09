@@ -497,6 +497,7 @@ body {
 
 .header__sort-item {
   flex: 1;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .header__sort-link {
@@ -507,7 +508,7 @@ body {
   line-height: var(--header-sort-bar-height);
   text-align: center;
   position: relative;
-  color: var(--text-color);
+  color: var(--text-color);  
 }
 
 .header__sort-item--active .header__sort-link,
